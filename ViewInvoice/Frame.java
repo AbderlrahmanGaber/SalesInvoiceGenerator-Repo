@@ -1,0 +1,348 @@
+
+package ViewInvoice;
+
+
+import InvoiceControl.Actions;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.View;
+
+
+public class Frame extends javax.swing.JFrame {
+
+    static void AddRowToJTable(Object[] object) {
+    }
+
+   
+    public Frame() {
+        
+        action  = new Actions(this);
+      
+        
+        initComponents();
+     
+    }
+    
+    
+   
+    
+    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        invoiceTBL = new javax.swing.JTable();
+        createInv = new javax.swing.JButton();
+        createInv.addActionListener(action);
+        deleteInv = new javax.swing.JButton();
+        deleteInv.addActionListener(action);
+        labelinvoivenum = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        invoiveNumlbl = new javax.swing.JLabel();
+        invoiceDatelbl = new javax.swing.JLabel();
+        customerNamelbl = new javax.swing.JLabel();
+        invoiceTotallbl = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        itemTBL = new javax.swing.JTable();
+        savebtn = new javax.swing.JButton();
+        savebtn.addActionListener(action);
+        cancelbtn = new javax.swing.JButton();
+        cancelbtn.addActionListener(action);
+        jLabel9 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        loadMenuItem = new javax.swing.JMenuItem();
+        loadMenuItem.addActionListener(action);
+        saveMenuItem = new javax.swing.JMenuItem();
+        saveMenuItem.addActionListener(action);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        invoiceTBL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "No.", "Date", "Customer", "Total"
+            }
+        ));
+        invoiceTBL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                invoiceTBLMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(invoiceTBL);
+
+        createInv.setText("Create New Invoice");
+        createInv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createInvActionPerformed(evt);
+            }
+        });
+
+        deleteInv.setText("Delete Invoice");
+
+        labelinvoivenum.setText("Invoice Num.");
+
+        jLabel2.setText("Invoice Date");
+
+        jLabel3.setText("Customer Name");
+
+        jLabel4.setText("Invoice Total");
+
+        invoiveNumlbl.setText(".");
+
+        invoiceDatelbl.setText(".");
+
+        customerNamelbl.setText(".");
+
+        invoiceTotallbl.setText(".");
+
+        itemTBL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Item Name", "Item Price", "Count", "Item Total"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, true, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(itemTBL);
+        if (itemTBL.getColumnModel().getColumnCount() > 0) {
+            itemTBL.getColumnModel().getColumn(0).setResizable(false);
+            itemTBL.getColumnModel().getColumn(1).setResizable(false);
+            itemTBL.getColumnModel().getColumn(2).setResizable(false);
+            itemTBL.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        savebtn.setText("Add New Item");
+        savebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                savebtnActionPerformed(evt);
+            }
+        });
+
+        cancelbtn.setText("Cancel");
+        cancelbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelbtnActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("InvoiceTable");
+
+        jMenu1.setText("File");
+
+        loadMenuItem.setText("Load Files");
+        loadMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(loadMenuItem);
+
+        saveMenuItem.setText("Save Files");
+        jMenu1.add(saveMenuItem);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(createInv)
+                        .addGap(38, 38, 38)
+                        .addComponent(deleteInv))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel9)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelinvoivenum)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(invoiveNumlbl)
+                                    .addComponent(invoiceDatelbl)
+                                    .addComponent(customerNamelbl)
+                                    .addComponent(invoiceTotallbl)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(148, 148, 148)
+                        .addComponent(savebtn)
+                        .addGap(103, 103, 103)
+                        .addComponent(cancelbtn)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelinvoivenum, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(invoiveNumlbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(invoiceDatelbl)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(customerNamelbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(invoiceTotallbl))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(createInv)
+                    .addComponent(deleteInv)
+                    .addComponent(savebtn)
+                    .addComponent(cancelbtn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
+        // TODO add your handling code her
+
+    }//GEN-LAST:event_loadMenuItemActionPerformed
+
+    private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cancelbtnActionPerformed
+
+    private void createInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createInvActionPerformed
+        NewInvoiceCreation createInvoice =new NewInvoiceCreation();
+        createInvoice.setVisible(true);
+      
+    }//GEN-LAST:event_createInvActionPerformed
+ 
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+       NewItemCreation createItem = new NewItemCreation();
+       createItem.setVisible(true);
+        
+    }//GEN-LAST:event_savebtnActionPerformed
+
+    private void invoiceTBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoiceTBLMouseClicked
+        // TODO add your handling code here:
+        int i =invoiceTBL.getSelectedRow();
+        TableModel model=(TableModel) invoiceTBL.getModel();
+        //invoiveNumlbl.setText(null);
+        invoiceDatelbl.setText(model.getValueAt(i, 1).toString());
+        customerNamelbl.setText(model.getValueAt(i, 2).toString());
+        invoiceTotallbl.setText(model.getValueAt(i, 3).toString());
+    }//GEN-LAST:event_invoiceTBLMouseClicked
+     public static void ADDRowToJTable(Object[] dataRow){
+      DefaultTableModel model=(DefaultTableModel) itemTBL.getModel();
+      model.addRow(dataRow);
+    
+      
+  }
+        public static void ADDRowToJTable2(Object[] dataRow){
+      DefaultTableModel model=(DefaultTableModel) invoiceTBL.getModel();
+      model.addRow(dataRow);
+    
+      
+  }
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Frame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Frame().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelbtn;
+    private javax.swing.JButton createInv;
+    private javax.swing.JLabel customerNamelbl;
+    private javax.swing.JButton deleteInv;
+    private javax.swing.JLabel invoiceDatelbl;
+    private static javax.swing.JTable invoiceTBL;
+    private javax.swing.JLabel invoiceTotallbl;
+    private javax.swing.JLabel invoiveNumlbl;
+    private static javax.swing.JTable itemTBL;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel labelinvoivenum;
+    private javax.swing.JMenuItem loadMenuItem;
+    private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JButton savebtn;
+    // End of variables declaration//GEN-END:variables
+    private Actions action;
+   
+
+}
+
+
+
+
