@@ -1,26 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package ViewInvoice;
+import ViewInvoice.Frame;
 
 import DesignInvoice.InvoiceTBL;
-import InvoiceControl.Actions;
+import InvoiceControl.Controller;
 import javax.swing.JFrame;
 
-/**
- *
- * @author AbdElRahman-Ramadan
- */
+
 public class NewInvoiceCreation extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewInvoiceCreation
-     */
+   
     public NewInvoiceCreation() {
         
-        action2  = new Actions(this);
+         
+        controller =new Controller(this);
         initComponents();
+    }
+
+    public NewInvoiceCreation(Object object, boolean b) {
     }
 
     /**
@@ -33,9 +30,9 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
     private void initComponents() {
 
         btnadd = new java.awt.Button();
-        btnadd.addActionListener(action2);
+        btnadd.addActionListener(controller);
         btncancel = new java.awt.Button();
-        btncancel.addActionListener(action2);
+        btncancel.addActionListener(controller);
         label1 = new java.awt.Label();
         label2 = new java.awt.Label();
         jTextField1 = new javax.swing.JTextField();
@@ -128,7 +125,9 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
 
-        Frame.ADDRowToJTable2(new Object[]{
+//        Frame.customerNamelbl.add(jTextField2);
+//        Frame.invoiceDatelbl.add(jTextField1);
+       Frame.ADDRowToJTable2(new Object[]{
         null,
                                 jTextField1.getText(),
                                 jTextField2.getText(),
@@ -144,6 +143,7 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -192,9 +192,17 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
     private java.awt.Label label2;
     private java.awt.Label label3;
     // End of variables declaration//GEN-END:variables
-private Actions action2;
+private Controller controller;
 
     public void add(InvoiceTBL invoiceTBL) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getInvoiceDate() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public String getCustomerName() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

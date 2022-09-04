@@ -2,7 +2,11 @@
 package ViewInvoice;
 
 
-import InvoiceControl.Actions;
+import DesignInvoice.InvoiceTBL;
+import InvoiceControl.Controller;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.text.View;
@@ -10,33 +14,39 @@ import javax.swing.text.View;
 
 public class Frame extends javax.swing.JFrame {
 
-    static void AddRowToJTable(Object[] object) {
+    
+    public static ArrayList<InvoiceTBL> invoices;
+
+    public static void AddRowToJTable(Object[] object) {
     }
 
    
     public Frame() {
         
-        action  = new Actions(this);
+        controller=new Controller(this);
+        
+        
       
         
         initComponents();
      
     }
-    
+
+
     
    
     
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         invoiceTBL = new javax.swing.JTable();
         createInv = new javax.swing.JButton();
-        createInv.addActionListener(action);
+        createInv.addActionListener(controller);
         deleteInv = new javax.swing.JButton();
-        deleteInv.addActionListener(action);
+        deleteInv.addActionListener(controller);
         labelinvoivenum = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -48,16 +58,16 @@ public class Frame extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         itemTBL = new javax.swing.JTable();
         savebtn = new javax.swing.JButton();
-        savebtn.addActionListener(action);
+        savebtn.addActionListener(controller);
         cancelbtn = new javax.swing.JButton();
-        cancelbtn.addActionListener(action);
+        cancelbtn.addActionListener(controller);
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         loadMenuItem = new javax.swing.JMenuItem();
-        loadMenuItem.addActionListener(action);
+        loadMenuItem.addActionListener(controller);
         saveMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem.addActionListener(action);
+        saveMenuItem.addActionListener(controller);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,7 +142,7 @@ public class Frame extends javax.swing.JFrame {
             }
         });
 
-        cancelbtn.setText("Cancel");
+        cancelbtn.setText("Cancel Item");
         cancelbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelbtnActionPerformed(evt);
@@ -236,30 +246,30 @@ public class Frame extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
-    private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMenuItemActionPerformed
+    private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code her
 
-    }//GEN-LAST:event_loadMenuItemActionPerformed
+    }                                            
 
-    private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtnActionPerformed
+    private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_cancelbtnActionPerformed
+    }                                         
 
-    private void createInvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createInvActionPerformed
+    private void createInvActionPerformed(java.awt.event.ActionEvent evt) {                                          
         NewInvoiceCreation createInvoice =new NewInvoiceCreation();
         createInvoice.setVisible(true);
       
-    }//GEN-LAST:event_createInvActionPerformed
+    }                                         
  
-    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_savebtnActionPerformed
+    private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
        NewItemCreation createItem = new NewItemCreation();
        createItem.setVisible(true);
-        
-    }//GEN-LAST:event_savebtnActionPerformed
+       
+    }                                       
 
-    private void invoiceTBLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_invoiceTBLMouseClicked
+    private void invoiceTBLMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
         int i =invoiceTBL.getSelectedRow();
         TableModel model=(TableModel) invoiceTBL.getModel();
@@ -267,7 +277,7 @@ public class Frame extends javax.swing.JFrame {
         invoiceDatelbl.setText(model.getValueAt(i, 1).toString());
         customerNamelbl.setText(model.getValueAt(i, 2).toString());
         invoiceTotallbl.setText(model.getValueAt(i, 3).toString());
-    }//GEN-LAST:event_invoiceTBLMouseClicked
+    }                                       
      public static void ADDRowToJTable(Object[] dataRow){
       DefaultTableModel model=(DefaultTableModel) itemTBL.getModel();
       model.addRow(dataRow);
@@ -315,16 +325,16 @@ public class Frame extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton cancelbtn;
     private javax.swing.JButton createInv;
-    private javax.swing.JLabel customerNamelbl;
+    public static javax.swing.JLabel customerNamelbl;
     private javax.swing.JButton deleteInv;
-    private javax.swing.JLabel invoiceDatelbl;
-    private static javax.swing.JTable invoiceTBL;
-    private javax.swing.JLabel invoiceTotallbl;
-    private javax.swing.JLabel invoiveNumlbl;
-    private static javax.swing.JTable itemTBL;
+    public static javax.swing.JLabel invoiceDatelbl;
+    public static javax.swing.JTable invoiceTBL;
+    public static javax.swing.JLabel invoiceTotallbl;
+    public static javax.swing.JLabel invoiveNumlbl;
+    public static javax.swing.JTable itemTBL;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -337,8 +347,16 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenuItem loadMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JButton savebtn;
-    // End of variables declaration//GEN-END:variables
-    private Actions action;
+    // End of variables declaration                   
+    private Controller controller;
+
+    public JTable getInvoiceTBL() {
+        return invoiceTBL;
+    }
+
+    public static void setInvoiceTBL(JTable invoiceTBL) {
+        Frame.invoiceTBL = invoiceTBL;
+    }
    
 
 }

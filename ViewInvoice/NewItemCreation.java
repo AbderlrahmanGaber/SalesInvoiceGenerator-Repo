@@ -1,17 +1,48 @@
 
 package ViewInvoice;
 
-import InvoiceControl.Actions;
+import InvoiceControl.Controller;
 
 
 public class NewItemCreation extends javax.swing.JFrame {
 
+  public String itemName;
+  public double itemPrice;
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
+
+    public double getItemPrice() {
+        return itemPrice;
+    }
+
+    public void setItemPrice(double itemPrice) {
+        this.itemPrice = itemPrice;
+    }
+
+    public int getCount() {
+        return Count;
+    }
+
+    public void setCount(int Count) {
+        this.Count = Count;
+    }
+  public int Count;
   
   
     public NewItemCreation() {
-        action3  = new Actions(this);
+        controller  = new Controller(this);
+      
         initComponents();
        
+    }
+
+    public NewItemCreation(Object object, boolean b) {
     }
 
    
@@ -26,9 +57,9 @@ public class NewItemCreation extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         addbtn = new javax.swing.JButton();
-        addbtn.addActionListener(action3);
+        addbtn.addActionListener(controller);
         cancelbtn = new javax.swing.JButton();
-        cancelbtn.addActionListener(action3);
+        cancelbtn.addActionListener(controller);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("New Item");
@@ -138,6 +169,9 @@ public class NewItemCreation extends javax.swing.JFrame {
                                 number,
              
              });
+
+
+
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtnActionPerformed
@@ -175,6 +209,7 @@ public class NewItemCreation extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new NewItemCreation().setVisible(true);
             }
@@ -191,11 +226,8 @@ public class NewItemCreation extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
-private Actions action3;
-
-    public Object getText() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ private Controller controller;
+    
 
     
         
