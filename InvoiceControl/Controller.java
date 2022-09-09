@@ -36,8 +36,7 @@ public Controller(){
         this.itemDialog = itemDialog;
     }
 
-//    public Controller(Frame frame) {
-//    }
+   
 
     
 
@@ -153,7 +152,7 @@ public Controller(){
    private void createNewInvoice() {
         
         invoiceDialog = new NewInvoiceCreation(null, true);
-        invoiceDialog.setVisible(true);
+       
 
         int invoiceNum = Frame.invoices.size() + 1;
         String dateString = invoiceDialog.getInvoiceDate();
@@ -162,7 +161,7 @@ public Controller(){
         try {
             if (dateString != null && !(customerName.isEmpty())) {
                 Date invoiceDate = df.parse(dateString);
-                InvoiceTBL invoice = new InvoiceTBL(invoiceNum,customerName, invoiceDate);
+                InvoiceTBL invoice = new InvoiceTBL(invoiceNum, customerName, invoiceDate);
                 Frame.invoices.add(invoice);
                 Object[][] invoiceTableData = getInvoiceTableData(Frame.invoices);
                 Frame.invoiceTBL.setModel(new DefaultTableModel(invoiceTableData,

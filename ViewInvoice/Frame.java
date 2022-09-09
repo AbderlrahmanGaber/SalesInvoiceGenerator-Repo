@@ -3,13 +3,12 @@ package ViewInvoice;
 
 
 import DesignInvoice.InvoiceTBL;
+import DesignInvoice.ItemDetails;
 import InvoiceControl.Controller;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
-import javax.swing.text.View;
 
 
 public class Frame extends javax.swing.JFrame {
@@ -23,7 +22,7 @@ public class Frame extends javax.swing.JFrame {
    
     public Frame() {
         
-        controller=new Controller(this);
+      controller=new Controller(this);
         
         
       
@@ -249,7 +248,9 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>                        
 
     private void loadMenuItemActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code her
+        // TODO add your NewInvoiceCreation createInvoice =new NewInvoiceCreation();
+       
+       
 
     }                                            
 
@@ -258,37 +259,64 @@ public class Frame extends javax.swing.JFrame {
     }                                         
 
     private void createInvActionPerformed(java.awt.event.ActionEvent evt) {                                          
-        NewInvoiceCreation createInvoice =new NewInvoiceCreation();
-        createInvoice.setVisible(true);
+       NewInvoiceCreation createInvoice =new NewInvoiceCreation();
+       createInvoice.setVisible(true);
+        
       
     }                                         
  
     private void savebtnActionPerformed(java.awt.event.ActionEvent evt) {                                        
-       NewItemCreation createItem = new NewItemCreation();
+        NewItemCreation createItem = new NewItemCreation();
        createItem.setVisible(true);
        
     }                                       
 
-    private void invoiceTBLMouseClicked(java.awt.event.MouseEvent evt) {                                        
-        // TODO add your handling code here:
-        int i =invoiceTBL.getSelectedRow();
-        TableModel model=(TableModel) invoiceTBL.getModel();
-        //invoiveNumlbl.setText(null);
-        invoiceDatelbl.setText(model.getValueAt(i, 1).toString());
-        customerNamelbl.setText(model.getValueAt(i, 2).toString());
-        invoiceTotallbl.setText(model.getValueAt(i, 3).toString());
+    private void invoiceTBLMouseClicked(java.awt.event.MouseEvent evt) { 
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        int selectedInvoice = Frame.invoiceTBL.getSelectedRow() + 1;
+        ArrayList<ItemDetails> invoiceItems;
+        for (InvoiceTBL invoice : Frame.invoices) {
+            if (invoice.getInvoiceNum() == selectedInvoice) {
+
+                Frame.invoiveNumlbl.setText(String.valueOf(invoice.getInvoiceNum()));
+                Frame.invoiceDatelbl.setText(sdf.format(invoice.getInvoiceDate()));
+                Frame.customerNamelbl.setText(invoice.getCustomerName());
+                double total = 0.0;
+                if (invoice.getInvoiceItems()!= null) {
+                    for (ItemDetails item : invoice.getInvoiceItems()) {
+                        total += item.getItemPrice() * item.getCount();
+                    }
+
+                    Frame.invoiceTotallbl.setText(String.valueOf(total));
+                    invoiceItems = invoice.getInvoiceItems();
+                    Object[][] table2Data = getInvoiceItemsTableData(invoiceItems);
+                    Frame.itemTBL.setModel(new DefaultTableModel(table2Data,
+                            new String[]{"No.", "Item Name", "Item Price", "Count", "Item Total"}));
+                } else {
+                    Frame.invoiceTotallbl.setText(String.valueOf(total));
+
+                    Frame.itemTBL.setModel(new javax.swing.table.DefaultTableModel(
+                            new Object[][]{
+
+                            },
+                            new String[]{
+                                    "No.", "Item Name", "Item Price", "Count", "Item Total"
+                            }
+                    ));
+
+                    Frame.itemTBL.setModel(new DefaultTableModel(new Object[][]{},
+                            new String[]{"No.", "Item Name", "Item Price", "Count", "Item Total"}));
+
+                }
+
+            }
+        }
     }                                       
      public static void ADDRowToJTable(Object[] dataRow){
       DefaultTableModel model=(DefaultTableModel) itemTBL.getModel();
       model.addRow(dataRow);
     
-      
-  }
-        public static void ADDRowToJTable2(Object[] dataRow){
-      DefaultTableModel model=(DefaultTableModel) invoiceTBL.getModel();
-      model.addRow(dataRow);
-    
-      
   }
     /**
      * @param args the command line arguments
@@ -357,6 +385,24 @@ public class Frame extends javax.swing.JFrame {
     public static void setInvoiceTBL(JTable invoiceTBL) {
         Frame.invoiceTBL = invoiceTBL;
     }
+    
+        private Object[][] getInvoiceItemsTableData(ArrayList<ItemDetails> items) {
+
+        Object[][] tableData = new Object[items.size()][5];
+        for (int i = 0; i < items.size(); i++) {
+            tableData[i][0] = items.get(i).getInvoice().getInvoiceNum();
+            tableData[i][1] = items.get(i).getItemName();
+            tableData[i][2] = items.get(i).getItemPrice();
+            tableData[i][3] = items.get(i).getCount();
+            double itemTotal = items.get(i).getItemPrice() * items.get(i).getCount();
+            tableData[i][4] = itemTotal;
+
+        }
+
+        return tableData;
+
+    }
+
    
 
 }

@@ -169,6 +169,7 @@ public class NewItemCreation extends javax.swing.JFrame {
                                 number,
              
              });
+        cancelbtnActionPerformed(evt);
 
 
 

@@ -1,10 +1,8 @@
 
 package ViewInvoice;
 import ViewInvoice.Frame;
-
 import DesignInvoice.InvoiceTBL;
 import InvoiceControl.Controller;
-import javax.swing.JFrame;
 
 
 public class NewInvoiceCreation extends javax.swing.JFrame {
@@ -125,14 +123,14 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
 
-//        Frame.customerNamelbl.add(jTextField2);
-//        Frame.invoiceDatelbl.add(jTextField1);
-       Frame.ADDRowToJTable2(new Object[]{
-        null,
-                                jTextField1.getText(),
-                                jTextField2.getText(),
-                               
-             });   
+        Frame.invoiceDatelbl.setText(jTextField1.getText());
+        Frame.customerNamelbl.setText(jTextField2.getText());
+        btncancelActionPerformed(evt);
+
+        
+     
+
+
         
     }//GEN-LAST:event_btnaddActionPerformed
 
