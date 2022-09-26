@@ -1,7 +1,10 @@
 
 package ViewInvoice;
 
+import DesignInvoice.InvoiceTBL;
+import DesignInvoice.ItemDetails;
 import InvoiceControl.Controller;
+import java.util.ArrayList;
 
 
 public class NewItemCreation extends javax.swing.JFrame {
@@ -161,6 +164,10 @@ public class NewItemCreation extends javax.swing.JFrame {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
     int number = Integer.parseInt(jTextField2.getText())*Integer.parseInt(jTextField3.getText());
+     //double total = 0.0;
+             
+
+      //  Frame.invoiceTotallbl.setText(String.valueOf(number));
         Frame.ADDRowToJTable(new Object[]{
         
                                 jTextField1.getText(),
@@ -169,10 +176,20 @@ public class NewItemCreation extends javax.swing.JFrame {
                                 number,
              
              });
+       
+   Frame.invoiceTotallbl.setText(String.valueOf(number));
+   
+    double total = 0.0;
+   
+                    
+for (int count = 0; count < Frame.itemTBL.getRowCount(); count++){
+  total+= Double.parseDouble (Frame.itemTBL.getValueAt(count, 3).toString());
+}
+            Frame.invoiceTotallbl.setText(String.valueOf(total));
         cancelbtnActionPerformed(evt);
 
 
-
+                
     }//GEN-LAST:event_addbtnActionPerformed
 
     private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtnActionPerformed

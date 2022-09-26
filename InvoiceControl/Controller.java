@@ -15,34 +15,32 @@ import java.util.Date;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 
-public class Controller implements ActionListener{
+public class Controller implements ActionListener {
+
     private Frame frame;
     private NewInvoiceCreation invoiceDialog;
     private NewItemCreation itemDialog;
-    
-public Controller(){
-    
-}
+
+    public Controller() {
+
+    }
+
     public Controller(Frame frame) {
         this.frame = frame;
     }
 
     public Controller(NewInvoiceCreation invoiceDialog) {
         this.invoiceDialog = invoiceDialog;
-       
+
     }
 
-    public Controller(NewItemCreation itemDialog ) {
+    public Controller(NewItemCreation itemDialog) {
         this.itemDialog = itemDialog;
     }
 
-   
-
-    
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()){
+        switch (e.getActionCommand()) {
             case "Load Files":
                 loadFiles();
                 break;
@@ -62,11 +60,11 @@ public Controller(){
                 cancelItem();
                 break;
         }
-                
+
     }
 
     private void loadFiles() {
-        
+
         String invoicesFilePath = null;
         String itemsFilePath = null;
 
@@ -102,6 +100,7 @@ public Controller(){
 
             for (InvoiceTBL invoice : Frame.invoices) {
                 System.out.println(invoice);
+
                 System.out.println("*********************************************");
             }
         } else {
@@ -109,11 +108,10 @@ public Controller(){
             System.out.println("*************************************************");
         }
 
-
     }
 
     private void saveFiles() {
-         String invoicesFilePath = null;
+        String invoicesFilePath = null;
         String itemsFilePath = null;
 
         JFileChooser fc1 = new JFileChooser();
@@ -149,12 +147,16 @@ public Controller(){
         }
     }
 
-   private void createNewInvoice() {
-        
-        invoiceDialog = new NewInvoiceCreation(null, true);
-       
+    private void createNewInvoice() {
 
-        int invoiceNum = Frame.invoices.size() + 1;
+        invoiceDialog = new NewInvoiceCreation(null, true);
+        int invoiceNum;
+        if (Frame.invoices != null) {
+            invoiceNum = Frame.invoices.size() + 1;
+        } else {
+            invoiceNum = 1;
+        }
+
         String dateString = invoiceDialog.getInvoiceDate();
         String customerName = invoiceDialog.getCustomerName();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
@@ -177,13 +179,11 @@ public Controller(){
     }
 
     private void deleteInvoice() {
-           if (Frame.invoiceTBL.getSelectedRow() >= 0)
-        {
+        if (Frame.invoiceTBL.getSelectedRow() >= 0) {
             Frame.invoices.remove(Frame.invoiceTBL.getSelectedRow());
             //coder : for loop invoices (arralist) .size ->  new num
-            for(int i = 0 ; i < Frame.invoices.size();i++)
-            {
-                Frame.invoices.get(i).setInvoiceNum(i+1);
+            for (int i = 0; i < Frame.invoices.size(); i++) {
+                Frame.invoices.get(i).setInvoiceNum(i + 1);
             }
             Object[][] invoiceTableData = getInvoiceTableData(Frame.invoices);
             Frame.invoiceTBL.setModel(new DefaultTableModel(invoiceTableData,
@@ -194,24 +194,24 @@ public Controller(){
             Frame.invoiceTotallbl.setText("0.0");
             Frame.itemTBL.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{
-                            {null, null, null, null, null},
-                            {null, null, null, null, null},
-                            {null, null, null, null, null},
-                            {null, null, null, null, null},
-                            {null, null, null, null, null}
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null}
                     },
                     new String[]{
-                            "No.", "Item Name", "Item Price", "Count", "Item Total"
+                        "No.", "Item Name", "Item Price", "Count", "Item Total"
                     }
             ));
         } else {
             System.out.println("Select Invoice First");
             System.out.println("--------------------------------------");
         }
-   }
+    }
 
     private void saveItem() {
-        
+
         itemDialog = new NewItemCreation(null, true);
         itemDialog.setVisible(true);
 
@@ -234,9 +234,9 @@ public Controller(){
             for (ItemDetails invoiceItem : invoiceItems) {
                 total += invoiceItem.getItemPrice() * invoiceItem.getCount();
             }
+            // Frame.invoiceTotallbl.setText(Double.toString(50));
 
-            Frame.invoiceTotallbl.setText(String.valueOf(total));
-
+            //Frame.invoiceTotallbl.setText(String.valueOf(total));
             Object[][] table2Data = getInvoiceItemsTableData(invoiceItems);
             Frame.itemTBL.setModel(new DefaultTableModel(table2Data,
                     new String[]{"No.", "Item Name", "Item Price", "Count", "Item Total"}));
@@ -244,6 +244,8 @@ public Controller(){
             Object[][] table1Data = getInvoiceTableData(Frame.invoices);
             Frame.invoiceTBL.setModel(new DefaultTableModel(table1Data,
                     new String[]{"No.", "Date", "Customer", "Total"}));
+            Frame.invoiceTotallbl.setText("50");
+
         } else {
             System.out.println("Select Invoice First");
             System.out.println("------------------------------------------");
@@ -251,7 +253,7 @@ public Controller(){
     }
 
     private void cancelItem() {
-         int selectedRowInInvoiceTable = Frame.invoiceTBL.getSelectedRow();
+        int selectedRowInInvoiceTable = Frame.invoiceTBL.getSelectedRow();
         if (selectedRowInInvoiceTable >= 0) {
 
             InvoiceTBL invoice = Frame.invoices.get(selectedRowInInvoiceTable);
@@ -268,7 +270,7 @@ public Controller(){
                     total += invoiceItem.getItemPrice() * invoiceItem.getCount();
                 }
 
-                frame.invoiceTotallbl.setText(String.valueOf(total));
+                Frame.invoiceTotallbl.setText(String.valueOf(total));
 
                 Object[][] table2Data = getInvoiceItemsTableData(items);
                 Frame.itemTBL.setModel(new DefaultTableModel(table2Data,
@@ -286,11 +288,9 @@ public Controller(){
             System.out.println("Select Invoice and Item in the same time");
             System.out.println("----------------------------------------------");
         }
-        
-    
-    
- }
-    
+
+    }
+
     //==Helper Methods==//
     private Object[][] getInvoiceTableData(ArrayList<InvoiceTBL> invoices) {
 
@@ -302,7 +302,7 @@ public Controller(){
             tableData[i][1] = sdf.format(invoices.get(i).getInvoiceDate());
             tableData[i][2] = invoices.get(i).getCustomerName();
             double total = 0.0;
-            if (invoices.get(i).getInvoiceItems()!= null) {
+            if (invoices.get(i).getInvoiceItems() != null) {
                 for (ItemDetails item : invoices.get(i).getInvoiceItems()) {
                     total += item.getItemPrice() * item.getCount();
                 }
