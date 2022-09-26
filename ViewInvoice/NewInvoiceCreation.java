@@ -1,24 +1,23 @@
-
 package ViewInvoice;
+
 import ViewInvoice.Frame;
 import DesignInvoice.InvoiceTBL;
+import DesignInvoice.ItemDetails;
 import InvoiceControl.Controller;
-
 
 public class NewInvoiceCreation extends javax.swing.JFrame {
 
-   
     public NewInvoiceCreation() {
-        
-         
-        controller =new Controller(this);
+
+        controller = new Controller(this);
         initComponents();
     }
+    public int invoiceNum;
+    public double Total;
 
     public NewInvoiceCreation(Object object, boolean b) {
     }
 
- 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -119,17 +118,43 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
 
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
 
+        if (Frame.invoices != null) {
+            invoiceNum = Frame.invoices.size() + 1;
+        } else {
+            invoiceNum = 1;
+        }
+        
+        Frame.invoiveNumlbl.setText(String.valueOf(invoiceNum));
         Frame.invoiceDatelbl.setText(jTextField1.getText());
         Frame.customerNamelbl.setText(jTextField2.getText());
         Frame.invoiceTotallbl.setText("0");
+
+        Frame.ADDRowToJTable2(new Object[]{
+            invoiceNum,
+            jTextField1.getText(),
+            jTextField2.getText(),
+            Total
+
+        });
         
         btncancelActionPerformed(evt);
-
         
-     
-
-
+       for (InvoiceTBL invoice : Frame.invoices)
+                if (invoice.getInvoiceItems()!= null) {
+                    for (ItemDetails item : invoice.getInvoiceItems()) {
+                        Total += item.getItemPrice() * item.getCount();
+                    }}
+       
+       
         
+        
+        
+        
+
+       
+        
+
+
     }//GEN-LAST:event_btnaddActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
@@ -139,7 +164,7 @@ public class NewInvoiceCreation extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -194,13 +219,12 @@ private Controller controller;
     }
 
     public String getInvoiceDate() {
-  
-   return this.jTextField1.getText();
+
+        return this.jTextField1.getText();
     }
 
     public String getCustomerName() {
-    return this.jTextField2.getText();
+        return this.jTextField2.getText();
     }
 
-  
 }

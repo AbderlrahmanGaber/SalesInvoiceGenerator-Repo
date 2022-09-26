@@ -402,6 +402,9 @@ public class Frame extends javax.swing.JFrame {
         return tableData;
 
     }
+         public static void ADDRowToJTable2(Object[] dataRow){
+      DefaultTableModel model=(DefaultTableModel) invoiceTBL.getModel();
+      model.addRow(dataRow);}
 
    
 

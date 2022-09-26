@@ -234,9 +234,7 @@ public class Controller implements ActionListener {
             for (ItemDetails invoiceItem : invoiceItems) {
                 total += invoiceItem.getItemPrice() * invoiceItem.getCount();
             }
-            // Frame.invoiceTotallbl.setText(Double.toString(50));
 
-            //Frame.invoiceTotallbl.setText(String.valueOf(total));
             Object[][] table2Data = getInvoiceItemsTableData(invoiceItems);
             Frame.itemTBL.setModel(new DefaultTableModel(table2Data,
                     new String[]{"No.", "Item Name", "Item Price", "Count", "Item Total"}));
