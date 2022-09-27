@@ -8,7 +8,10 @@ import InvoiceControl.Controller;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.swing.JLabel;
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 =======
 >>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 import javax.swing.JTable;
@@ -35,6 +38,7 @@ public class Frame extends javax.swing.JFrame {
      
     }
 
+<<<<<<< HEAD
     public static JLabel getInvoiceTotallbl() {
         return invoiceTotallbl;
     }
@@ -43,6 +47,8 @@ public class Frame extends javax.swing.JFrame {
         Frame.invoiceTotallbl = invoiceTotallbl;
     }
 
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 
     
    
@@ -267,7 +273,11 @@ public class Frame extends javax.swing.JFrame {
     }                                            
 
     private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {                                          
+<<<<<<< HEAD
         
+=======
+        // TODO add your handling code here:
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
     }                                         
 
     private void createInvActionPerformed(java.awt.event.ActionEvent evt) {                                          

@@ -54,7 +54,11 @@ public class Controller implements ActionListener {
                 deleteInvoice();
                 break;
             case "Add New Item":
+<<<<<<< HEAD
                 createItem();
+=======
+                saveItem();
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
                 break;
             case "Cancel Item":
                 cancelItem();
@@ -158,7 +162,10 @@ public class Controller implements ActionListener {
         }
 
         String dateString = invoiceDialog.getInvoiceDate();
+<<<<<<< HEAD
         System.out.println(dateString);
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
         String customerName = invoiceDialog.getCustomerName();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         try {
@@ -166,7 +173,10 @@ public class Controller implements ActionListener {
                 Date invoiceDate = df.parse(dateString);
                 InvoiceTBL invoice = new InvoiceTBL(invoiceNum, customerName, invoiceDate);
 <<<<<<< HEAD
+<<<<<<< HEAD
                 System.out.println(invoice);
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 =======
 >>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
                 Frame.invoices.add(invoice);
@@ -200,13 +210,19 @@ public class Controller implements ActionListener {
             Frame.itemTBL.setModel(new javax.swing.table.DefaultTableModel(
                     new Object[][]{
 <<<<<<< HEAD
+<<<<<<< HEAD
                        
 =======
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null},
                         {null, null, null, null, null}
+<<<<<<< HEAD
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
+=======
 >>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
                     },
                     new String[]{
@@ -218,6 +234,7 @@ public class Controller implements ActionListener {
             System.out.println("--------------------------------------");
         }
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     private void createItem() {
@@ -236,6 +253,16 @@ public class Controller implements ActionListener {
 
         int selectedRow = Frame.invoiceTBL.getSelectedRow();
         if (selectedRow == 0) {
+=======
+
+    private void saveItem() {
+
+        itemDialog = new NewItemCreation(null, true);
+        itemDialog.setVisible(true);
+
+        int selectedRow = Frame.invoiceTBL.getSelectedRow();
+        if (selectedRow >= 0) {
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
             InvoiceTBL invoice = Frame.invoices.get(selectedRow);
             ArrayList<ItemDetails> invoiceItems = invoice.getInvoiceItems();
             if (invoiceItems == null) {
@@ -262,8 +289,11 @@ public class Controller implements ActionListener {
             Frame.invoiceTBL.setModel(new DefaultTableModel(table1Data,
                     new String[]{"No.", "Date", "Customer", "Total"}));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
             System.out.println(Frame.invoiceTotallbl);
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 =======
 >>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
             Frame.invoiceTotallbl.setText("50");

@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 package ViewInvoice;
 
 import DesignInvoice.InvoiceTBL;
 import DesignInvoice.ItemDetails;
 import InvoiceControl.Controller;
+<<<<<<< HEAD
 <<<<<<< HEAD
 import static java.lang.Integer.parseInt;
 =======
@@ -14,6 +19,15 @@ public class NewItemCreation extends javax.swing.JFrame {
 
     public String itemName;
     public double itemPrice;
+=======
+import java.util.ArrayList;
+
+
+public class NewItemCreation extends javax.swing.JFrame {
+
+  public String itemName;
+  public double itemPrice;
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 
     public String getItemName() {
         return itemName;
@@ -38,6 +52,7 @@ public class NewItemCreation extends javax.swing.JFrame {
     public void setCount(int Count) {
         this.Count = Count;
     }
+<<<<<<< HEAD
     public int Count;
 
     public NewItemCreation() {
@@ -45,11 +60,25 @@ public class NewItemCreation extends javax.swing.JFrame {
 
         initComponents();
 
+=======
+  public int Count;
+  
+  
+    public NewItemCreation() {
+        controller  = new Controller(this);
+      
+        initComponents();
+       
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
     }
 
     public NewItemCreation(Object object, boolean b) {
     }
 
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -165,8 +194,11 @@ public class NewItemCreation extends javax.swing.JFrame {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
 <<<<<<< HEAD
+<<<<<<< HEAD
         int number = Integer.parseInt(jTextField2.getText()) * Integer.parseInt(jTextField3.getText());
 =======
+=======
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
     int number = Integer.parseInt(jTextField2.getText())*Integer.parseInt(jTextField3.getText());
      //double total = 0.0;
              
@@ -191,6 +223,7 @@ for (int count = 0; count < Frame.itemTBL.getRowCount(); count++){
 }
             Frame.invoiceTotallbl.setText(String.valueOf(total));
         cancelbtnActionPerformed(evt);
+<<<<<<< HEAD
 >>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 
         Frame.ADDRowToJTable(new Object[]{
@@ -215,10 +248,14 @@ for (int count = 0; count < Frame.itemTBL.getRowCount(); count++){
         Frame.invoiceTBL.setValueAt(total, returnedRow, 3);
 
         cancelbtnActionPerformed(evt);
+=======
+
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 
                 
     }//GEN-LAST:event_addbtnActionPerformed
 
+<<<<<<< HEAD
     private int getRowIndexesOfValue(int value) {
 
         int rowNumbers = 0;
@@ -242,6 +279,42 @@ for (int count = 0; count < Frame.itemTBL.getRowCount(); count++){
 
     public static void main(String args[]) {
 
+=======
+    private void cancelbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelbtnActionPerformed
+       
+                this.setVisible(false);
+
+    }//GEN-LAST:event_cancelbtnActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewItemCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewItemCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewItemCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewItemCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -261,5 +334,13 @@ for (int count = 0; count < Frame.itemTBL.getRowCount(); count++){
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
  private Controller controller;
+<<<<<<< HEAD
 
+=======
+    
+
+    
+        
+    
+>>>>>>> 18013b1476892a8aad00f612905c1dfc9e9b6890
 }
